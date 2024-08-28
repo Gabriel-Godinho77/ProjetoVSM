@@ -1,7 +1,6 @@
 package com.fuentes.vsm_backend.service;
 
-import com.fuentes.vsm_backend.dto.PessoaRequestDTO;
-import com.fuentes.vsm_backend.dto.PessoaResponseDTO;
+import com.fuentes.vsm_backend.dto.*;
 import com.fuentes.vsm_backend.entities.Cidade;
 import com.fuentes.vsm_backend.entities.Pessoa;
 import com.fuentes.vsm_backend.mapper.PeopleMapper;
@@ -13,13 +12,16 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PessoaService {
@@ -100,9 +102,15 @@ public class PessoaService {
     }
 
     @Transactional(readOnly = true)
-    public Page<PessoaRequestDTO> findAllPaged(Pageable pageable) {
-        Page<Pessoa> page = repository.findAll(pageable);
-        return page.map(PessoaRequestDTO::new);
+    public List<PessoaRequestDTO> findAll(PessoaFilter filter) {
+        if(Objects.nonNull(filter.getNome())){
+            Pessoa pessoa = new Pessoa();
+            pessoa.setNome(filter.getNome());
+            List<Pessoa> page = repository.findAll(Example.of(pessoa));
+            return page.stream().map(PessoaRequestDTO::new).collect(Collectors.toList());
+        }
+        List<Pessoa> page = repository.findAll();
+        return page.stream().map(PessoaRequestDTO::new).collect(Collectors.toList());
     }
 
     @Transactional

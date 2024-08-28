@@ -1,7 +1,6 @@
 package com.fuentes.vsm_backend.controller;
 
-import com.fuentes.vsm_backend.dto.PessoaRequestDTO;
-import com.fuentes.vsm_backend.dto.PessoaResponseDTO;
+import com.fuentes.vsm_backend.dto.*;
 import com.fuentes.vsm_backend.entities.Pessoa;
 import com.fuentes.vsm_backend.mapper.PeopleMapper;
 import com.fuentes.vsm_backend.service.PessoaService;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -31,8 +31,8 @@ public class PessoaController {
         }
 
     @GetMapping()
-    public ResponseEntity<Page<PessoaRequestDTO>> listarPessoas(@PageableDefault(size = 10, sort = {"nome"}) Pageable pageable) {
-        Page<PessoaRequestDTO> page = service.findAllPaged(pageable);
+    public ResponseEntity<List<PessoaRequestDTO>> listarPessoas(PessoaFilter filter) {
+        List<PessoaRequestDTO> page = service.findAll(filter);
         return ResponseEntity.ok(page);
     }
 
