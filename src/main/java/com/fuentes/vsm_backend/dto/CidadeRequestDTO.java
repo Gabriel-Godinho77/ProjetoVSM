@@ -4,9 +4,8 @@ import com.fuentes.vsm_backend.entities.Cidade;
 
 public class CidadeRequestDTO {
 
-     Long id;
-     String nome;
-
+     private Long id;
+     private String nome;
      public CidadeRequestDTO(){
      }
 
@@ -34,4 +33,5 @@ public class CidadeRequestDTO {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 }

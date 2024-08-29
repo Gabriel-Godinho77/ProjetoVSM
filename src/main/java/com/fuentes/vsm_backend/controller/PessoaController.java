@@ -1,13 +1,10 @@
 package com.fuentes.vsm_backend.controller;
 
-import com.fuentes.vsm_backend.dto.*;
-import com.fuentes.vsm_backend.entities.Pessoa;
-import com.fuentes.vsm_backend.mapper.PeopleMapper;
+import com.fuentes.vsm_backend.dto.PessoaFilter;
+import com.fuentes.vsm_backend.dto.PessoaRequestDTO;
+import com.fuentes.vsm_backend.dto.PessoaResponseDTO;
 import com.fuentes.vsm_backend.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

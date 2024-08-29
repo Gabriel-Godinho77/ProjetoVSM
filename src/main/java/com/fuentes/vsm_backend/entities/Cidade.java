@@ -3,7 +3,6 @@ package com.fuentes.vsm_backend.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @Table(name = "cidades")
@@ -39,5 +38,4 @@ public class Cidade implements Serializable {
     public void setCidadeNome(String cidadeNome) {
         this.cidadeNome = cidadeNome;
     }
-
 }

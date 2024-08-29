@@ -1,7 +1,5 @@
 package com.fuentes.vsm_backend.dto;
 
-import com.fuentes.vsm_backend.entities.Cidade;
-
 public class PessoaResponseDTO {
 
    private String nome;
