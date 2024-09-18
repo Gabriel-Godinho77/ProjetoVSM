@@ -114,14 +114,11 @@ public class PessoaService {
     }
 
     @Transactional
-    public PessoaResponseDTO findByCpfOrCnpj(String cpfOrCnpj){
-        Pessoa pessoa = repository.findByCpforcnpj(cpfOrCnpj);
+    public PessoaAbstractDTO findByCpfOrCnpj(String cpfOrCnpj){
+        PessoaAbstractDTO pessoa = repository.findByCpforcnpj(cpfOrCnpj).toPessoaRequestDto();
         if (Objects.isNull(pessoa)) {
             throw new ResourceNotFoundException("Pessoa não encontrada para o cpf/cnpj " + cpfOrCnpj);
         }
-        PessoaResponseDTO responseDTO = peopleMapper.toDTO(pessoa);
-        return responseDTO;
+        return pessoa;
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.fuentes.vsm_backend.controller;
 
+import com.fuentes.vsm_backend.dto.PessoaAbstractDTO;
 import com.fuentes.vsm_backend.dto.PessoaFilter;
 import com.fuentes.vsm_backend.dto.PessoaRequestDTO;
 import com.fuentes.vsm_backend.dto.PessoaResponseDTO;
@@ -46,10 +47,9 @@ public class PessoaController {
     }
 
     @GetMapping(value = "/{cpfCnpj}")
-    public ResponseEntity<PessoaResponseDTO>  buscarCliente(@PathVariable String cpfCnpj){
-        PessoaResponseDTO responseDTO = service.findByCpfOrCnpj(cpfCnpj);
+    public ResponseEntity<PessoaAbstractDTO>  buscarCliente(@PathVariable String cpfCnpj){
+        PessoaAbstractDTO responseDTO = service.findByCpfOrCnpj(cpfCnpj);
         return ResponseEntity.ok(responseDTO);
     }
-
 
 }

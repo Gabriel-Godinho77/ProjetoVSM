@@ -1,13 +1,13 @@
 package com.fuentes.vsm_backend.dto;
 
 public class CidadeResponseDTO {
-    private String nome;
+    private String cidadeNome;
 
     public String getNome() {
-        return nome;
+        return cidadeNome;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.cidadeNome = cidadeNome;
     }
 }

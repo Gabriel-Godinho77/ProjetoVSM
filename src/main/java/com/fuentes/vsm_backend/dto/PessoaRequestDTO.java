@@ -1,9 +1,10 @@
 package com.fuentes.vsm_backend.dto;
 
 import com.fuentes.vsm_backend.entities.Pessoa;
+import lombok.*;
+
 
 public class PessoaRequestDTO {
-
 
      Long id;
      String nome;
@@ -125,6 +126,6 @@ public class PessoaRequestDTO {
     }
 
     public void setEmail(String email) {
-        this.email = email;
-    }
+    this.email = email;
+}
 }
