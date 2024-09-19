@@ -46,9 +46,9 @@ public class PessoaController {
         return ResponseEntity.ok().body(dto);
     }
 
-    @GetMapping(value = "/{cpfCnpj}")
-    public ResponseEntity<PessoaAbstractDTO>  buscarCliente(@PathVariable String cpfCnpj){
-        PessoaAbstractDTO responseDTO = service.findByCpfOrCnpj(cpfCnpj);
+    @GetMapping(value = "/{cpforCnpj}")
+    public ResponseEntity<PessoaAbstractDTO>  buscarCliente(@PathVariable String cpforCnpj){
+        PessoaAbstractDTO responseDTO = service.findByCpfOrCnpj(cpforCnpj);
         return ResponseEntity.ok(responseDTO);
     }
 

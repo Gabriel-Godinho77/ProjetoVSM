@@ -7,6 +7,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CidadeResponseDTO {
+public class CidadeAbstractDTO {
+
+    private Long cidade_Id;
     private String cidadeNome;
+
 }

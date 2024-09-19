@@ -23,7 +23,7 @@ public class CidadeController {
     @PostMapping
     public ResponseEntity<CidadeRequestDTO> cadastrar(@RequestBody CidadeRequestDTO dados){
         service.insert(dados);
-        URI uri= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dados.getId()).toUri();
+        URI uri= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dados.getCidade_Id()).toUri();
         return ResponseEntity.created(uri).body(dados);
     }
 
@@ -33,21 +33,21 @@ public class CidadeController {
         return ResponseEntity.ok(page);
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        service.delete(id);
+    @DeleteMapping(value = "/{cidade_Id}")
+    public ResponseEntity<Void> delete(@PathVariable Long cidade_Id) {
+        service.delete(cidade_Id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<CidadeRequestDTO> update(@PathVariable Long id, @RequestBody CidadeRequestDTO dto) {
-        dto = service.update(id, dto);
+    @PutMapping(value = "/{cidade_Id}")
+    public ResponseEntity<CidadeRequestDTO> update(@PathVariable Long cidade_Id, @RequestBody CidadeRequestDTO dto) {
+        dto = service.update(cidade_Id, dto);
         return ResponseEntity.ok().body(dto);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CidadeResponseDTO> getCidade(@PathVariable Long id) {
-        CidadeResponseDTO responseDTO = service.findById(id);
+    @GetMapping("/{cidade_Id}")
+    public ResponseEntity<CidadeResponseDTO> getCidade(@PathVariable Long cidade_Id) {
+        CidadeResponseDTO responseDTO = service.findById(cidade_Id);
         return ResponseEntity.ok(responseDTO);
     }
 

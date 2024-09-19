@@ -1,9 +1,14 @@
 package com.fuentes.vsm_backend.entities;
 
+import com.fuentes.vsm_backend.dto.CidadeResponseDTO;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "cidades")
 public class Cidade implements Serializable {
@@ -11,31 +16,21 @@ public class Cidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long cidade_Id;
     private String cidadeNome;
 
 
     public Cidade() {
     }
 
-    public Cidade(Long id, String cidadeNome) {
-        this.id = id;
+    public Cidade(Long cidade_Id, String cidadeNome) {
+        this.cidade_Id = cidade_Id;
         this.cidadeNome = cidadeNome;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCidadeNome() {
-        return cidadeNome;
-    }
-
-    public void setCidadeNome(String cidadeNome) {
-        this.cidadeNome = cidadeNome;
+    public CidadeResponseDTO toCidadeResponseDTO(){
+        return CidadeResponseDTO.builder()
+                .cidadeNome(this.getCidadeNome())
+                .build();
     }
 }
